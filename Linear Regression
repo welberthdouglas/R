@@ -1,3 +1,4 @@
+```
 #                        Linear Regression                         #
 #__________________________________________________________________#
 
@@ -51,5 +52,5 @@ lr3=lm(medv~lstat*age,Boston) #calculate multiple linear regression taking into 
                               #linear regression in the form: y = A +Bx +Cy + D(x*y)
 
 # Adding nom linearities
-
+```
 
