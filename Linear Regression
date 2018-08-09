@@ -35,12 +35,21 @@ lrtotal=lm(medv~.,Boston)
 # medv (as a funcion of) all the predictors contained in the Boston dataset
 
 #!   IMPORTANT   !
-# note that if we take the summary of this lm the variable age that was significant in the simple regression is no 
+# note that if we take the summary of this lm, the variable age that was significant in the simple regression is no 
 # longer relevant if we consider all the predictors, that happens due to correlations between age and other variables
-# Since the other variables now are in the model, age (which is corelated to them) are no longer necessary
+# Since the other variables now are in the model, age (which is corelated to them) are no longer significant
 
 # in such conditions it might be the case that you want to remove the variables thar are not significant to the respose
 # and update the model, for that we use the "update" command
 
 lrtotal2=update(lrtotal,~.-age-indus)  #removing age and indus that are no longer significant
 summary(lrtotal2)
+
+# Including interaction between the two variables
+
+lr3=lm(medv~lstat*age,Boston) #calculate multiple linear regression taking into account the interaction between the two predictors
+                              #linear regression in the form: y = A +Bx +Cy + D(x*y)
+
+# Adding nom linearities
+
+
