@@ -1,4 +1,4 @@
-```
+#------------------------------------------------------------------#
 #                        Linear Regression                         #
 #__________________________________________________________________#
 
@@ -35,7 +35,7 @@ predict(lrm,data.frame(lstat=c(5,10,15), age=c(20,25,30)),interval = "confidence
 lrtotal=lm(medv~.,Boston) 
 # medv (as a funcion of) all the predictors contained in the Boston dataset
 
-#!   IMPORTANT   !
+#                                              !   IMPORTANT   !
 # note that if we take the summary of this lm, the variable age that was significant in the simple regression is no 
 # longer relevant if we consider all the predictors, that happens due to correlations between age and other variables
 # Since the other variables now are in the model, age (which is corelated to them) are no longer significant
@@ -51,6 +51,12 @@ summary(lrtotal2)
 lr3=lm(medv~lstat*age,Boston) #calculate multiple linear regression taking into account the interaction between the two predictors
                               #linear regression in the form: y = A +Bx +Cy + D(x*y)
 
-# Adding nom linearities
-```
+# Adding nom linearities by using the predictor sqared as another predictor
+
+lrnlin=lm(medv~lstat+I(lstat^2),Boston) # the identity function I() is necessary to inform R that lstat^2 is another predictor rather than 
+                                        # a operation in the linear model equation
+lrnlin2=lm(medv~poly(lstat,4))           # writes a polinomial funcion of order 4 in the lstat variable and perform the linear model in this function
+
+
+
 
