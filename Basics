@@ -1,3 +1,4 @@
+''' R
 #
 #  R basics
 #______________
@@ -42,4 +43,4 @@ hist(y)   #makes a histogram of y
 # the command dataexample$cars
 # Its possible to simplify this by attaching the dataset with the command "attach(dataexample)" and then its possible to call the data in "cars" simply by its name.
 
-
+'''
