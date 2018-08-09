@@ -1,0 +1,46 @@
+#                        Linear Regression                         #
+#__________________________________________________________________#
+
+# Loading the datasets for an example
+library(MASS)
+
+
+#Simple linear regression
+#________________________
+
+# we're going to use the dataset "Boston"
+names(Boston) # shows the names of the colunms fot the dataset
+
+fix(Boston)  # Use to visualize the dataset as a table in a editor in a new window
+
+plot(medv~lstat,Boston,col="blue")  # ploting  medv (response) and lstat(predictor) , the ",Boston" tells R to seach the variables in the Boston dataset
+lr1 = lm(medv~lstat,Boston)  # fits a linear regression for de data !!! The "~" means "is modeled as..." !!!
+summary(lr1) # for a summary of the data
+abline(lr1)  # adds a straight line to a plot (uses as argument the intercept and the slope of the line)
+names(lr1)  # attibutes of the linear regression model
+confint(lr1,level=0.99)  # shows the confidence intervals for the parameters of the linear regression, and sets it to 99% (95% confidence interval by default)
+predict(lr1,data.frame(lstat=c(5,10,15)),interval="confidence",level=0.99)  #predict the response for values 5, 10 and 15 with 99% of confidence
+
+
+
+
+# Multiple linear regression
+#___________________________
+
+lrm=lm(medv~lstat+age,Boston) # calculates the multiple linear regression using lstat and age as predictors
+# medv (as a function of) lstat + age
+predict(lrm,data.frame(lstat=c(5,10,15), age=c(20,25,30)),interval = "confidence", level=0.99)
+
+lrtotal=lm(medv~.,Boston) 
+# medv (as a funcion of) all the predictors contained in the Boston dataset
+
+#!   IMPORTANT   !
+# note that if we take the summary of this lm the variable age that was significant in the simple regression is no 
+# longer relevant if we consider all the predictors, that happens due to correlations between age and other variables
+# Since the other variables now are in the model, age (which is corelated to them) are no longer necessary
+
+# in such conditions it might be the case that you want to remove the variables thar are not significant to the respose
+# and update the model, for that we use the "update" command
+
+lrtotal2=update(lrtotal,~.-age-indus)  #removing age and indus that are no longer significant
+summary(lrtotal2)
