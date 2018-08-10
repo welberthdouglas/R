@@ -57,6 +57,15 @@ lrnlin=lm(medv~lstat+I(lstat^2),Boston) # the identity function I() is necessary
                                         # a operation in the linear model equation
 lrnlin2=lm(medv~poly(lstat,4))           # writes a polinomial funcion of order 4 in the lstat variable and perform the linear model in this function
 
+# ploting non linear curves
+
+points(lstat,fitted(lrnlin))  # command "fitted" uses the lm model to calculate the response for the predictor
+plot(medv~lstat)
+
+
+# visualizing/ editing data in a in a editor window
+
+fix(Boston)
 
 
 
