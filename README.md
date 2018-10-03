@@ -1,2 +1,2 @@
 # R
-Scrips in R
+Basic scrips in R
